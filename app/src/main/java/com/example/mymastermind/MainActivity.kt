@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
                 Surface(color = MaterialTheme.colorScheme.background) {
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "gameScreen") {
-                        composable("gameScreen") { GameScreen(navController) }
+                        composable("gameScreen") { GameScreen() }
                         // Additional composable screens can be added here
                     }
                 }

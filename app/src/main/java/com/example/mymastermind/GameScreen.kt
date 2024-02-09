@@ -7,18 +7,14 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
-import com.example.mymastermind.model.Fruit
 import com.example.mymastermind.model.GameViewModel
 
 @Composable
-fun GameScreen(navController: NavController, gameViewModel: GameViewModel = GameViewModel()) {
+fun GameScreen(gameViewModel: GameViewModel = GameViewModel()) {
     val gameState = gameViewModel.gameManager.gameState
     // State for the user's current guess
     val guess = remember { mutableStateOf("") }
@@ -34,19 +30,17 @@ fun GameScreen(navController: NavController, gameViewModel: GameViewModel = Game
                         contentDescription = fruit.displayName
                     )
                 }
-                }
-
-        }
-
-//__________________________________________________________________________________
-            Button(onClick = {
-                gameViewModel.processGuess(guess.value)
-            }) {
-                Text("Guess")
             }
-
-            HintsScreen()
         }
+//__________________________________________________________________________________
+        Button(onClick = {
+            gameViewModel.processGuess(guess.value)
+        }) {
+            Text("Guess")
+        }
+
+        HintsScreen()
+    }
 }
-    // Display game state and hints here
+// Display game state and hints here
 

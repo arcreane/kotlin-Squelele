@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mymastermind.model.GameViewModel
-import androidx.compose.ui.Modifier
 
 @Composable
 fun HintsScreen(gameViewModel: GameViewModel = viewModel()) {

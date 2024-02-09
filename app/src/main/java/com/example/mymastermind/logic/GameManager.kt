@@ -1,6 +1,5 @@
 package com.example.mymastermind.logic
 
-import androidx.compose.material3.Text
 import com.example.mymastermind.model.Fruit
 import com.example.mymastermind.model.GameState
 
