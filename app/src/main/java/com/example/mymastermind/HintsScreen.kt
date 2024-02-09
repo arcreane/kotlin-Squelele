@@ -6,11 +6,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mymastermind.model.GameViewModel
 
 @Composable
-fun HintsScreen(gameViewModel: GameViewModel = viewModel()) {
+fun HintsScreen(gameViewModel: GameViewModel = GameViewModel()) {
     val gameState = gameViewModel.gameState.collectAsState().value
 
     Column() {
