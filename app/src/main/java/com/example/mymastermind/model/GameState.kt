@@ -1,5 +1,5 @@
 package com.example.mymastermind.model
-
+//Suit l'état actuel du jeu.
 data class GameState(
     var selectedFruits: List<Fruit> = emptyList(),
     val guesses: MutableList<List<Fruit>> = mutableListOf(),

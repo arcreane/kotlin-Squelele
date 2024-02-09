@@ -2,7 +2,7 @@ package com.example.mymastermind.logic
 
 import com.example.mymastermind.model.Fruit
 import com.example.mymastermind.model.GameState
-
+//gère le jeu et les intéractions.
 class GameManager {
     val gameState = GameState()
     private val allFruits = Fruit.entries

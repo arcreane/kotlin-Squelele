@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mymastermind.model.GameViewModel
-
+//Montre l'historique.
 @Composable
 fun HistoryScreen(gameViewModel: GameViewModel = viewModel()) {
     val gameState = gameViewModel.gameState.collectAsState().value

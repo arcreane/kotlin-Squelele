@@ -1,7 +1,7 @@
 package com.example.mymastermind.model
 
 import com.example.mymastermind.R
-
+//Stockage des fruits dans une classe enum.
 enum class Fruit(val hasSeeds: Boolean, val isPeelable: Boolean, val displayName: String, val imageResId: Int) {
     Fraise(hasSeeds = true, isPeelable = false, displayName = "Fraise", R.drawable.strawberry),
     Banane(hasSeeds = false, isPeelable = true, displayName = "Banane", R.drawable.banana),

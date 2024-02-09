@@ -14,19 +14,20 @@ import androidx.compose.ui.res.painterResource
 import com.example.mymastermind.model.Fruit
 import com.example.mymastermind.model.GameViewModel
 
+//l'interface principale du jeu
 @Composable
 fun GameScreen(gameViewModel: GameViewModel = GameViewModel()) {
     val gameState = gameViewModel.gameManager.gameState
     // State for the user's current guess
     val guess = remember { mutableStateOf("") }
     val fruits = Fruit.entries.map { it.displayName }
-    val expanded = remember { mutableStateOf(BooleanArray(fruits.size) { false }) }
+    val expanded = remember { mutableStateOf(false) }
     val selectedFruits =
-        remember { mutableStateOf(List(fruits.size) { Fruit.Fraise }) } // Default selection
+        remember { mutableStateOf(Fruit.entries.toTypedArray()) } // Default selection
 
     Column {
-        HistoryScreen()  // Assuming you have a HistoryScreen composable
-        // UI for entering and submitting a guess
+        HistoryScreen()  // l'appel et l'affichage de l'historique (pas terminé)
+        // Affichage des 4 fruits 1er row -> les fruits à trouver(pour faciliter les test) second row -> les fruits clickable pour le choix du joueur
         Row(verticalAlignment = Alignment.CenterVertically) {
             gameState.selectedFruits.forEach { fruit ->
                 IconButton(onClick = { /* do something */ }) {
@@ -40,41 +41,40 @@ fun GameScreen(gameViewModel: GameViewModel = GameViewModel()) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             fruits.indices.take(4).forEach() { index ->
                 val fruit = selectedFruits.value[index]
-                IconButton(onClick = { expanded.value[index] = true }) {
+                IconButton(onClick = { expanded.value = true }) {
                     Image(
-                        painter = painterResource(id = fruit.imageResId), // Ensure your Fruit enum has an imageResId property
+                        painter = painterResource(id = fruit.imageResId),
                         contentDescription = fruit.displayName
                     )
                     DropdownMenu(
-                        expanded = expanded.value[index],
-                        onDismissRequest = { expanded.value[index] = false }
+                        expanded = expanded.value,
+                        onDismissRequest = { expanded.value = false }
                     ) {
                         DropdownMenuItem(text = {
-                            Text("Edit")
+                            Text(fruit.displayName)
                         }, onClick = {
                             selectedFruits.value =
                                 selectedFruits.value.toMutableList().apply { this[index] = fruit }
-                            expanded.value[index] = false
-                        }) {
-                            Text(fruit.displayName) // This line is crucial for displaying the fruit names in the dropdown.
-                        }
+                                    .toTypedArray()
+                            expanded.value = false
+                        })
                     }
 
                 }
             }
         }
 
-//__________________________________________________________________________________
+        //Bouton qui sert à la comparaison des 4 fruits avec ceux choisit aléatoirement
 
-                Button(onClick = {
-                    gameViewModel.processGuess(guess.value)
-                }) {
-                    Text("Guess")
-                }
-
-                HintsScreen()
-
+        Button(onClick = {
+            gameViewModel.processGuess(guess.value)
+        }) {
+            Text("Guess")
         }
+
+        HintsScreen()// indice (pas terminé)
+
+    }
 
 }
 

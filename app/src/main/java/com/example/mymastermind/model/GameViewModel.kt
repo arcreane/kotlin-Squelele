@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-
+//pont entre la logique du jeu (modèle) et l'interface utilisateur (vue)
 class GameViewModel : ViewModel() {
     public val gameManager = GameManager() // Assumes GameManager is already implemented
     val gameState = MutableStateFlow(GameState()) // Holds the current state of the game
